@@ -21,9 +21,10 @@ class InvitesServices:
             guest_members = Guest.get_members(invite_data.id_invitado)
 
             guest_members_data = [MembersData(id=member.id, nombre=member.nombre, asistira=member.asistira) for member in guest_members]
-            guest_data = GuestData(id_invitado=id_invitado, tipo_invitado=guest_data.tipo_invitado, nombre=guest_data.nombre, num_integrantes=guest_data.num_integrantes, menores=guest_data.menores, adicionales=guest_data.adicionales, miembros=guest_members_data)
+            guest_data = GuestData(id_invitado=id_invitado, tipo_invitado=guest_data.tipo_invitado, nombre=guest_data.nombre, num_integrantes=guest_data.num_integrantes, 
+                                   menores=guest_data.menores, adicionales=guest_data.adicionales, miembros=guest_members_data, telefono=guest_data.telefono)
 
-            response_data = ResponseInviteData(id=invite_data.id, invitado=guest_data, respuesta=invite_data.respuesta, asistira=invite_data.asistira)
+            response_data = ResponseInviteData(id=invite_data.id, invitado=guest_data, respuesta=invite_data.respuesta, asistira=invite_data.asistira, buzon=invite_data.buzon)
 
             return response_data
 

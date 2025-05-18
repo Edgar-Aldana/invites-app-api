@@ -26,7 +26,7 @@ class GuestData(BaseModel):
     adicionales: int
 
     miembros: List[MembersData]
-
+    telefono: str | None
 
 
 class ResponseInviteData(BaseModel):
@@ -35,6 +35,7 @@ class ResponseInviteData(BaseModel):
     invitado: GuestData
     respuesta: bool
     asistira: bool | None
+    buzon: str | None
 
 
 

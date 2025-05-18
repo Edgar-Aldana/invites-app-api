@@ -15,6 +15,7 @@ class Guest(Base):
     num_integrantes = Column(Integer, nullable=False,  default=1)
     menores = Column(Integer, nullable=False, default=0)
     adicionales = Column(Integer, nullable=False, default=0)
+    telefono = Column(String(10), default=None)
     
 
     def find_all():
