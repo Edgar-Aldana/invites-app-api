@@ -11,7 +11,7 @@ load_dotenv()
 
 
 DATABASE_NAME = getenv("DATABASE_NAME")
-DATABASE_URL = f"sqlite:///./Data/{DATABASE_NAME}"
+DATABASE_URL = f"sqlite:///./{DATABASE_NAME}"
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
