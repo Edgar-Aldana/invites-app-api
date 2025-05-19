@@ -46,3 +46,14 @@ class Guest(Base):
             return e
         finally:
             session.close()
+
+
+    def update(**kwargs):
+        try:
+            response = session.query(Guest).filter(Guest.id == kwargs["id"]).update(kwargs)
+            session.commit()
+            return response
+        except Exception as e:
+            return e
+        finally:
+            session.close()

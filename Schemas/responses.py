@@ -39,8 +39,16 @@ class ResponseInviteData(BaseModel):
 
 
 
+
 class ResponseInvite(APIResponse):
 
     data: ResponseInviteData
+
+
+
+
+class SendInviteResponse(APIResponse):
+
+    data: str | None
 
 

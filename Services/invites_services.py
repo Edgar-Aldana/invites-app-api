@@ -1,7 +1,9 @@
 
 from fastapi import HTTPException
 from Models.guests import Guest
+from Models.members import Members
 from Models.responses import Invites
+from Schemas.requests import SendInviteRequest
 from Schemas.responses import GuestData, MembersData, ResponseInviteData
 
 
@@ -33,5 +35,44 @@ class InvitesServices:
 
 
 
+
+    def update_invite_data(self, request: SendInviteRequest):
+
+        try:
+
+            if request.asistencia == "si":
+                asistira = True
+                guest_members = Guest.get_members(request.invitadoId)
+
+
+                for member in guest_members:
+                    if member.id in request.miembrosConfirmados:
+                        Members.update(**{"id": member.id, "asistira": True})
+                    else:
+                        Members.update(**{"id": member.id, "asistira": False})
+
+            else:
+                asistira = False
+                guest_members = Guest.get_members(request.invitadoId)
+
+                for member in guest_members:
+                    Members.update(**{"id": member.id, "asistira": False})
+            
+            
+            Invites.update(**{"id_invitado": request.invitadoId, 
+                                         "respuesta": True, 
+                                         "asistira": asistira, 
+                                         "buzon": request.mensaje})
+        
+
+
+            Guest.update(**{"id": request.invitadoId, "telefono": request.telefono})
+
+            return "Invite Updated"
+
+          
+
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
         
 

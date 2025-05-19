@@ -26,3 +26,16 @@ class Invites(Base):
             session.close()
 
 
+    def update(**kwargs):
+        try:
+            response = session.query(Invites).filter(Invites.id_invitado == kwargs["id_invitado"]).update(kwargs)
+            session.commit()
+            return response
+        except Exception as e:
+            return e
+        finally:
+            session.close()
+
+
+
+

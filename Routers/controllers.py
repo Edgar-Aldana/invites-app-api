@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from Schemas.requests import RequestInviteData
-from Schemas.responses import ResponseInvite
+from Schemas.requests import RequestInviteData, SendInviteRequest
+
+from Schemas.responses import SendInviteResponse, ResponseInvite
 from Services.invites_services import InvitesServices
 
 invites_router = APIRouter(prefix="/invites")
@@ -15,6 +16,14 @@ async def get_invite_data(request: RequestInviteData) -> ResponseInvite:
     return response
 
 
+
+@invites_router.put("/updateInviteData")
+async def update_invite_data(request: SendInviteRequest) -> SendInviteResponse:
+    
+    InvitesServices().update_invite_data(request)
+    response = SendInviteResponse(success=True, message="Response Received", data=None)
+
+    return response
 
 
 

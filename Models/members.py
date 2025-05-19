@@ -33,3 +33,14 @@ class Members(Base):
             return e
         finally:
             session.close()
+
+
+    def update(**kwargs):
+        try:
+            response = session.query(Members).filter(Members.id == kwargs["id"]).update(kwargs)
+            session.commit()
+            return response
+        except Exception as e:
+            return e
+        finally:
+            session.close()
