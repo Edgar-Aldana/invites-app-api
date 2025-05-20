@@ -12,6 +12,11 @@ class GuestData(BaseModel):
     miembrosConfirmados: List[int]
 
 
+class MembersExtraData(BaseModel):
+    id: int
+    nombre: str
+
+
 class SendInviteRequest(BaseModel):
     
     invitadoId: str
@@ -23,4 +28,4 @@ class SendInviteRequest(BaseModel):
     mensaje: str | None
     
     agregarExtras: bool
-    extras: Optional[List[int]] = []
+    extras: Optional[List[MembersExtraData]] = []

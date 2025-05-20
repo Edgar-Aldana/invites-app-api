@@ -16,6 +16,13 @@ class MembersData(BaseModel):
     asistira: bool
 
 
+class MembersExtraData(BaseModel):
+    
+    id: int | str
+    nombre: str
+
+
+
 class GuestData(BaseModel):
     
     id_invitado: str
@@ -25,8 +32,14 @@ class GuestData(BaseModel):
     menores: int
     adicionales: int
 
+
     miembros: List[MembersData]
+    extras: List[MembersExtraData]
     telefono: str | None
+
+
+
+
 
 
 class ResponseInviteData(BaseModel):
