@@ -29,3 +29,9 @@ class SendInviteRequest(BaseModel):
     
     agregarExtras: bool
     extras: Optional[List[MembersExtraData]] = []
+
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str

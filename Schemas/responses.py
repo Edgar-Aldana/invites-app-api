@@ -65,3 +65,13 @@ class SendInviteResponse(APIResponse):
     data: str | None
 
 
+
+class UserAuthData(BaseModel):
+
+    token: str
+
+
+
+class AuthResponse(APIResponse):
+
+    data: UserAuthData
